@@ -11,9 +11,11 @@ namespace Student_Management_Sysytem
 
 			List<List<string>> _student = new List<List<string>>();
 
-			for (int i = 0; ; i++) {
-				List<string> Details = new List<string> ();
-				if (i == 0) {
+			for (int i = 0; ; i++) 
+			{
+				List<string> student_Details = new List<string> ();
+				if (i == 0) 
+				{
 					goto start;
 				}
 			check:
@@ -25,11 +27,13 @@ namespace Student_Management_Sysytem
 					if (s == "n") // Check string
 					{
 						break;
-					}else if(s == "y")
+					}
+					else if(s == "y")
 					{
 						goto start;
 					}
-					else{
+					else
+					{
 						Console.WriteLine("Invalide input");
 						goto check;
 					}
@@ -59,11 +63,11 @@ namespace Student_Management_Sysytem
 						break;
 					}
 
-					Details.Add(Console.ReadLine());
+					student_Details.Add(Console.ReadLine());
 				}
-				_student.Add (Details);
+				_student.Add (student_Details);
 			}
-			Console.WriteLine("Name Email-Id         PhoneNo.   Class   State ");
+
 			foreach (var sublist in _student)
 			{
 				foreach (var value in sublist)
@@ -80,14 +84,17 @@ namespace Student_Management_Sysytem
 			if (a == "n") // Check string
 			{
 				System.Environment.Exit(1);
-			}else if(a == "y")
+			}
+			else if(a == "y")
 			{
 				string name = Console.ReadLine ();
 
 				foreach (var sublist in _student)
 				{
-					foreach (var x in sublist) {
-						if (x == name) {
+					foreach (var x in sublist)
+					{
+						if (x == name)
+						{
 							Console.WriteLine (x);
 						} else {
 							Console.WriteLine ("Not found");
