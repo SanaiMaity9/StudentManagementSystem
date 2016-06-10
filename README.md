@@ -1,7 +1,7 @@
 # Student Management System
 
 
-<p>In this Project we can do activites:</p>
+<p>In This Project We Can Do Activites:</p>
 
 1. Registration(Enter Students and Teacher Details).
 2. Searching(Search Details).
