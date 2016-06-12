@@ -2,12 +2,13 @@ using System;
 using NameSpaceStudent;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace NameSpaceStudents
 {
 	public class Students
 	{
-		List<Student> StudentList = new List<Student>();
+		public List<Student> StudentList = new List<Student>();
 
 		public void Insert(string name , string className , string state , string phoneNo , string emailId )
 		{
@@ -28,6 +29,28 @@ namespace NameSpaceStudents
 
 			return studentDetails;
 		}
+
+		public bool Update(string emailId )
+		{
+
+			if (StudentList.Exists (x => x.EmailId == emailId)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+		public bool Search(string name )
+		{
+
+			if (StudentList.Exists (x => x.EmailId == name)) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+
+
 	}
 }
 
