@@ -9,19 +9,20 @@ namespace Administration
 {
 	public class Administration
 	{
-		static string name;
-		static string className;
-		static string state;
-		static string phoneNo;
-		static string emailId;
-		static University student = new University ();
+	    string name;
+	    string className;
+		string state;
+		string phoneNo;
+		string emailId;
+		University student = new University ();
 
 		public static void Main(string[] args)
 		{
-			Options ();
+			Administration administration = new Administration ();
+			administration.Options ();
 		}
 
-		public static void Options()
+		public  void Options()
 		{
 			Console.WriteLine ("\nChoose the option :\n");
 			Console.WriteLine ("1. Registration\t");
@@ -31,31 +32,31 @@ namespace Administration
 			Console.WriteLine ("5. Display All Deatails\n");
 
 			int Selection = Convert.ToInt32(Console.ReadLine());
-		    SwitchCase(Selection);
+		    this.SwitchCase(Selection);
 
 		}
 
-		public static void SwitchCase(int Selection)
+		public void SwitchCase(int Selection)
 		{
 			
 			switch (Selection) {
 			case 1:
-				StudentDetails ();
+				this.StudentDetails ();
 				break;
 
 			case 2:
-				UpdateStudent ();
+				this.UpdateStudent ();
 				break;
 
 			case 3:
-				SearchStudent ();
+				this.SearchStudent ();
 				break;
 				case 4:
 				break;
 			case 5:
 				Console.WriteLine ("Name\tClass\tState\tPhoneNo.\tEmailId");
 				Console.WriteLine (student.Print ());
-				Options ();
+				this.Options ();
 				break;
 				default:
 				break;
@@ -63,7 +64,7 @@ namespace Administration
 			}
 		}
 
-		public static void StudentDetails()
+		public void StudentDetails()
 		{
 			while (true) {
 				Console.WriteLine ("Name");
@@ -80,13 +81,13 @@ namespace Administration
 				Console.WriteLine ("Do you want to entry more student details[y/n]");
 				string UserInput = Console.ReadLine ();
 				if (UserInput != "y") {
-					Options ();
+					this.Options ();
 
 				}
 			}
 		}
 
-		public static void UpdateStudent()
+		public void UpdateStudent()
 		{
 			Console.WriteLine ("Enter the name for search");
 			string SearchName = Console.ReadLine ();
@@ -103,10 +104,10 @@ namespace Administration
 			
 				}
 
-			Options();
+			this.Options();
 		}
 
-		public static void SearchStudent()
+		public  void SearchStudent()
 		{
 			Console.WriteLine ("Enter the emailid for Update");
 			string searchEmail = Console.ReadLine ();
@@ -127,7 +128,7 @@ namespace Administration
 			} else {
 				Console.WriteLine ("Data Not Found");
 			}
-			Options();
+			this.Options();
 		}
 
 	}
