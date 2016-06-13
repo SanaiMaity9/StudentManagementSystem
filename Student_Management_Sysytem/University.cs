@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace NameSpaceStudents
+namespace NameSpaceUniversity
 {
-	public class Students
+	public class University
 	{
 		public List<Student> StudentList = new List<Student>();
 
@@ -33,21 +33,15 @@ namespace NameSpaceStudents
 		public bool Update(string emailId )
 		{
 
-			if (StudentList.Exists (x => x.EmailId == emailId)) {
-				return true;
-			} else {
-				return false;
-			}
+			return StudentList.Exists (x => x.EmailId == emailId);
+			
 		}
 
 		public bool Search(string name )
 		{
 
-			if (StudentList.Exists (x => x.EmailId == name)) {
-				return true;
-			} else {
-				return false;
-			}
+			return StudentList.Exists (x => x.Name == name);
+
 		}
 
 

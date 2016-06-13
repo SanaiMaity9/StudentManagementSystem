@@ -1,20 +1,20 @@
 using System;
-using NameSpaceStudents;
+using NameSpaceUniversity;
 using NameSpaceStudent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Management
+namespace Administration
 {
-	public class Management
+	public class Administration
 	{
 		static string name;
 		static string className;
 		static string state;
 		static string phoneNo;
 		static string emailId;
-		static Students student = new Students ();
+		static University student = new University ();
 
 		public static void Main(string[] args)
 		{
@@ -91,13 +91,18 @@ namespace Management
 			Console.WriteLine ("Enter the name for search");
 			string SearchName = Console.ReadLine ();
 
-			if (student.Search (SearchName)) {
+				if (student.Search (SearchName)) {
 
-				var studentList = student.StudentList.FirstOrDefault (x => x.EmailId == SearchName);
-				Console.WriteLine ("{0}\t{1}\t{2}\t{3}\t{4}",studentList.Name,studentList.Class,studentList.State,studentList.PhoneNo,studentList.EmailId);
-			} else {
-				Console.WriteLine ("Data Not Found");
-			}
+
+				for (int i=0; i < student.StudentList.Count; i++) {
+					var studentList = student.StudentList.Find(x => x.Name.Contains(SearchName));
+					Console.WriteLine ("{0}\t{1}\t{2}\t{3}\t{4}", studentList.Name, studentList.Class, studentList.State, studentList.PhoneNo, studentList.EmailId);
+				}
+				} else {
+					Console.WriteLine ("Data Not Found");
+			
+				}
+
 			Options();
 		}
 
