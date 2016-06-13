@@ -6,7 +6,7 @@
 1. Registration(Enter Students).
 2. Searching(Search Details).
 3. Update(Update Details).
-4. Delete(Delete Student or Teacher details).
+4. Delete(Delete Student).
 
 
 # Work In Progress
