@@ -94,7 +94,8 @@ namespace Administration
 				case 2:
 					string PrintFormat = "Name\t";
 					int Limit = teacher.GetCount();
-					for (int i = 1; i < Limit + 1; i++) {
+					for (int i = 1; i < Limit + 1; i++) 
+					{
 						PrintFormat += "Class" + i + "\t";
 					}
 					PrintFormat += "State\tPhoneNo.\tSubject\tEmailId";
@@ -185,16 +186,18 @@ namespace Administration
 		public void NoOfClasses()
 		{
 		  int i = 0;
-			while (true) {
+			while (i < 3) {
 				Console.WriteLine ("Class");
 				int classes;
 				bool conversionSucceed = int.TryParse(Console.ReadLine(), out classes);
 				if (conversionSucceed) {
 					className [i] = classes.ToString();
-					Console.WriteLine ("Do you want to enter more classes[y/n]");
-					string x = Console.ReadLine ();
-					if (x != "y") {
-						break;
+					if (i < 2) {
+						Console.WriteLine ("Do you want to enter more classes[y/n]");
+						string x = Console.ReadLine ();
+						if (x != "y") {
+							break;
+						}
 					}
 				} else {
 					Console.WriteLine ("Invalid input");

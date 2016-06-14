@@ -12,9 +12,10 @@ namespace NameSpaceUniversity
 		public List<Student> StudentList = new List<Student>();
 		public List<Teacher> TeacherList = new List<Teacher>();
 
-		public void Insert(string name , string[] className , string state , string phoneNo , string subject, string emailId, int choice )
+		public void Insert(string name , string[] className , string state , string phoneNo , string subject, string emailId, int Type )
 		{
-			if (choice == 1) {
+			if (Type == 1) 
+			{
 				var student = new Student (name, className[0], state, phoneNo, emailId);
 				StudentList.Add (student);
 			}
@@ -25,10 +26,12 @@ namespace NameSpaceUniversity
 			}
 
 		}
+
 		public int GetCount()
 		{
 			int i = 0;
-			while(TeacherList.Exists (x => x.Class[i] != null))
+			bool check = TeacherList.Exists (x => x.Class[i] != null);
+			while( check && i < 3 )
 			{
 				i++;
 
@@ -36,8 +39,8 @@ namespace NameSpaceUniversity
 			return i;
 		}
 
-		public string Print(int choice ){
-
+		public string Print(int choice )
+		{
 		string studentDetails = "";
 		string teacherDetails = "";
 			if (choice == 1) 
