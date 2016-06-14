@@ -3,23 +3,31 @@ using NameSpaceStudent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using NameSpaceTeacher;
 
 namespace NameSpaceUniversity
 {
 	public class University
 	{
 		public List<Student> StudentList = new List<Student>();
+		public List<Teacher> TeacherList = new List<Teacher>();
 
-		public void Insert(string name , string className , string state , string phoneNo , string emailId )
+		public void Insert(string name , string[] className , string state , string phoneNo , string subject, string emailId, int choice )
 		{
-			var student = new Student (name,className,state,phoneNo,emailId);
-
-			StudentList.Add (student);
+			if (choice == 1) {
+				var student = new Student (name, className[0], state, phoneNo, emailId);
+				StudentList.Add (student);
+			}
+			else 
+			{
+				var teacher = new Teacher (name, className, state, phoneNo, subject, emailId);
+				TeacherList.Add (teacher);
+			}
 
 		}
 
 		public string Print(){
-			string studentDetails = null;
+			string studentDetails = "";
 			foreach (var student in StudentList)
 			{
 
