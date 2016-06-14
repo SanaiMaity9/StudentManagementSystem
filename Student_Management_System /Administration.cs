@@ -1,6 +1,7 @@
 using System;
 using NameSpaceUniversity;
 using NameSpaceStudent;
+using NameSpaceTeacher;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Administration
 		string emailId;
 		University student = new University ();
 		University teacher = new University ();
+
 
 		public static void Main(string[] args)
 		{
@@ -49,7 +51,7 @@ namespace Administration
 			
 			switch (Selection) {
 			case 1:
-				this.NestedSwitchCase ();
+				this.InsertSwitch ();
 				break;
 
 			case 2:
@@ -63,9 +65,7 @@ namespace Administration
 				this.DeleteStudent ();
 				break;
 			case 5:
-				Console.WriteLine ("Name\tClass\tState\tPhoneNo.\tEmailId");
-				Console.WriteLine (student.Print ());
-				this.Options ();
+				this.DisplaySwitch ();
 				break;
 			case 6:
 				System.Environment.Exit (1);
@@ -78,8 +78,42 @@ namespace Administration
 			}
 		}
 
+		public void DisplaySwitch()
+		{
+			Console.WriteLine ("\nChoose the option :\n");
+			Console.WriteLine ("1. Student\t");
+			Console.WriteLine ("2. Teacher\n");
+			int Selection;
+			bool conversionSucceed = int.TryParse(Console.ReadLine(), out Selection);
+			if (conversionSucceed) {
+				switch (Selection) {
+					case 1:
+					Console.WriteLine ("Name\tClass\tState\tPhoneNo.\tEmailId");
+					Console.WriteLine (student.Print (1));
+					break;
+				case 2:
+					string PrintFormat = "Name\t";
+					int Limit = teacher.GetCount();
+					for (int i = 1; i < Limit + 1; i++) {
+						PrintFormat += "Class" + i + "\t";
+					}
+					PrintFormat += "State\tPhoneNo.\tSubject\tEmailId";
+					Console.WriteLine (PrintFormat);
+					Console.WriteLine (teacher.Print(2));
+					break;
+					default:
+					Console.WriteLine ("Invalid Input");
+					this.Options ();
+					break;
+				}
+			} else {
+				Console.WriteLine ("Invalid input");
+				this.DisplaySwitch ();
+			}
+			this.Options ();
+		}
 
-		public void NestedSwitchCase()
+		public void InsertSwitch()
 		{
 			Console.WriteLine ("\nChoose the option :\n");
 			Console.WriteLine ("1. Student\t");
@@ -102,7 +136,7 @@ namespace Administration
 				}
 			} else {
 				Console.WriteLine ("Invalid input");
-				this.NestedSwitchCase ();
+				this.InsertSwitch ();
 			}
 			this.Options ();
 		}
@@ -133,7 +167,6 @@ namespace Administration
 			while (true) {
 				Console.WriteLine ("Name");
 				name = Console.ReadLine ();
-				//Console.WriteLine ("Class");
 				this.NoOfClasses ();
 				Console.WriteLine ("State");
 				state = Console.ReadLine ();
@@ -143,7 +176,7 @@ namespace Administration
 				subject = Console.ReadLine();
 				Console.WriteLine ("Email Id");
 				emailId = Console.ReadLine ();
-				student.Insert (name, className, state, phoneNo, subject, emailId, 1);
+				teacher.Insert (name, className, state, phoneNo, subject, emailId, 2);
 				this.Options ();
 
 			}
@@ -152,14 +185,12 @@ namespace Administration
 		public void NoOfClasses()
 		{
 		  int i = 0;
-
 			while (true) {
 				Console.WriteLine ("Class");
 				int classes;
 				bool conversionSucceed = int.TryParse(Console.ReadLine(), out classes);
 				if (conversionSucceed) {
 					className [i] = classes.ToString();
-					i++;
 					Console.WriteLine ("Do you want to enter more classes[y/n]");
 					string x = Console.ReadLine ();
 					if (x != "y") {
@@ -167,9 +198,8 @@ namespace Administration
 					}
 				} else {
 					Console.WriteLine ("Invalid input");
-					this.NoOfClasses ();
 				}
-			
+				i++;
 			}
 		}
 

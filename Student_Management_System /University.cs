@@ -25,17 +25,37 @@ namespace NameSpaceUniversity
 			}
 
 		}
-
-		public string Print(){
-			string studentDetails = "";
-			foreach (var student in StudentList)
+		public int GetCount()
+		{
+			int i = 0;
+			while(TeacherList.Exists (x => x.Class[i] != null))
 			{
-
-				studentDetails += student.GetPrintable () + "\n";
+				i++;
 
 			}
+			return i;
+		}
 
-			return studentDetails;
+		public string Print(int choice ){
+
+		string studentDetails = "";
+		string teacherDetails = "";
+			if (choice == 1) 
+			{
+				foreach (var student in StudentList)
+				{
+					studentDetails += student.GetPrintable () + "\n";
+				}
+				return studentDetails;
+			}
+		    else
+		    {
+				foreach (var teacher in TeacherList)
+				{
+					teacherDetails += teacher.GetPrintable () + "\n";
+				}
+				return teacherDetails;	
+			}
 		}
 
 		public bool Update(string emailId )
