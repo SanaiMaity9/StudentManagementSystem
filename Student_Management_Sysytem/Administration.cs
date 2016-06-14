@@ -29,11 +29,17 @@ namespace Administration
 			Console.WriteLine ("2. Search Details\t");
 			Console.WriteLine ("3. Update Details \t");
 			Console.WriteLine ("4. Delete Details\t");
-			Console.WriteLine ("5. Display All Deatails\n");
+			Console.WriteLine ("5. Display All Deatails\t");
+			Console.WriteLine ("6. Exit\n");
 
-			int Selection = Convert.ToInt32(Console.ReadLine());
-		    this.SwitchCase(Selection);
-
+			int Selection;
+			bool conversionSucceed = int.TryParse(Console.ReadLine(), out Selection);
+			if (conversionSucceed) {
+				this.SwitchCase(Selection);
+			} else {
+				Console.WriteLine ("Invalid input");
+				this.Options ();
+			}
 		}
 
 		public void SwitchCase(int Selection)
@@ -45,20 +51,26 @@ namespace Administration
 				break;
 
 			case 2:
-				this.UpdateStudent ();
+				this.SearchStudent ();
 				break;
 
 			case 3:
-				this.SearchStudent ();
+				this.UpdateStudent ();
 				break;
-				case 4:
+			case 4:
+				this.DeleteStudent ();
 				break;
 			case 5:
 				Console.WriteLine ("Name\tClass\tState\tPhoneNo.\tEmailId");
 				Console.WriteLine (student.Print ());
 				this.Options ();
 				break;
-				default:
+			case 6:
+				System.Environment.Exit (1);
+				break;
+			default:
+				Console.WriteLine ("Invalid Input");
+				this.Options ();
 				break;
 
 			}
@@ -78,27 +90,19 @@ namespace Administration
 				Console.WriteLine ("Email Id");
 				emailId = Console.ReadLine ();
 				student.Insert (name, className, state, phoneNo, emailId);
-				Console.WriteLine ("Do you want to entry more student details[y/n]");
-				string UserInput = Console.ReadLine ();
-				if (UserInput != "y") {
 					this.Options ();
 
-				}
 			}
 		}
 
-		public void UpdateStudent()
+		public void SearchStudent()
 		{
 			Console.WriteLine ("Enter the name for search");
 			string SearchName = Console.ReadLine ();
 
 				if (student.Search (SearchName)) {
-
-
-				for (int i=0; i < student.StudentList.Count; i++) {
 					var studentList = student.StudentList.Find(x => x.Name.Contains(SearchName));
 					Console.WriteLine ("{0}\t{1}\t{2}\t{3}\t{4}", studentList.Name, studentList.Class, studentList.State, studentList.PhoneNo, studentList.EmailId);
-				}
 				} else {
 					Console.WriteLine ("Data Not Found");
 			
@@ -107,7 +111,7 @@ namespace Administration
 			this.Options();
 		}
 
-		public  void SearchStudent()
+		public  void UpdateStudent()
 		{
 			Console.WriteLine ("Enter the emailid for Update");
 			string searchEmail = Console.ReadLine ();
@@ -128,6 +132,23 @@ namespace Administration
 			} else {
 				Console.WriteLine ("Data Not Found");
 			}
+			this.Options();
+		}
+
+		public void DeleteStudent()
+		{
+			Console.WriteLine ("Enter the name for Delete");
+			string SearchEmail = Console.ReadLine ();
+
+			if (student.Update (SearchEmail)) {
+				var index = student.StudentList.FindIndex(i => i.EmailId == SearchEmail);
+				student.StudentList.RemoveAt (index);
+				Console.WriteLine ("Data Deleted");
+			} else {
+				Console.WriteLine ("Data Not Found");
+
+			}
+
 			this.Options();
 		}
 
