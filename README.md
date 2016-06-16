@@ -3,10 +3,8 @@
 
 <p>In This Project We Can Do Activites:</p>
 
-1. Registration(Enter Students).
-2. Searching(Search Details).
-3. Update(Update Details).
-4. Delete(Delete Student).
+1. Registration(Enter Students and Teacher).
+2. Display(Display Student and Teacher).
 
 
 # Work In Progress
