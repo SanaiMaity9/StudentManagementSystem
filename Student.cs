@@ -10,9 +10,9 @@ namespace StudentManagementSystem
     {
 		
 		
-		public  Student( string name, string[] className, string state, string phoneNo, string[] subject, string emailId )
+		public  Student( string name, string[] standard, string state, string phoneNo, string[] subject, string emailId )
 		{
-			base.Details(name,className,state,phoneNo,subject,emailId);
+			base.Details(name,standard,state,phoneNo,subject,emailId);
 			
 		}
 		

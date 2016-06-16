@@ -103,7 +103,7 @@ namespace StudentManagementSystem
 		public void TeacherDisplayFormat()
 		{
 			string PrintFormat = "Name\t";
-					int Limit = administrator.GetClass();
+					int Limit = administrator.GetClassCount();
 					for (int i = 1; i < Limit + 1; i++) 
 					{
 						PrintFormat += "Class" + i + "\t";
@@ -114,7 +114,7 @@ namespace StudentManagementSystem
 		public void StudentDisplayFormat()
 		{
 			string PrintFormat = "Name\tClass\tState\tPhoneNo\t";
-					int Limit = administrator.GetSubject();
+					int Limit = administrator.GetSubjectCount();
 					for (int i = 1; i < Limit + 1; i++) 
 					{
 						PrintFormat += "Subject" + i + "\t";

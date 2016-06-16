@@ -28,14 +28,14 @@ namespace StudentManagementSystem
 		}
 		public int GetClassCount()
 		{
-			Array Class = new Array[3];
+			Array standard = new Array[3];
 			int i=0;
 			foreach (var item in MemberList)
 			{
-			   Class = item.teacher.GetClass();
+			   standard = item.teacher.GetClass();
 			  
 			}
-			foreach (var item in Class)
+			foreach (var item in standard)
 			{
 				if(item != null)
 				{

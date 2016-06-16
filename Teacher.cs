@@ -9,9 +9,9 @@ namespace StudentManagementSystem
 	
 	public class Teacher : PersonalDetails
 	{
-		public  Teacher( string name, string[] className, string state, string phoneNo, string[] subject, string emailId )
+		public  Teacher( string name, string[] standard, string state, string phoneNo, string[] subject, string emailId )
 		{
-			base.Details(name,className,state,phoneNo,subject,emailId);
+			base.Details(name,standard,state,phoneNo,subject,emailId);
 			
 		}
 		public Teacher()
