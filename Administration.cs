@@ -26,7 +26,7 @@ namespace StudentManagementSystem
 			}
 		  MemberList.Add(members);
 		}
-		public int GetClass()
+		public int GetClassCount()
 		{
 			Array Class = new Array[3];
 			int i=0;
@@ -45,9 +45,9 @@ namespace StudentManagementSystem
 			return i;
 		}
 		
-		public int GetSubject()
+		public int GetSubjectCount()
 		{
-			Array Subject = new Array[3];
+			Array Subject = new Array[10];
 			int i=0;
 			foreach (var item in MemberList)
 			{
@@ -62,6 +62,23 @@ namespace StudentManagementSystem
 				}
 			}
 			return i;
+		}
+		
+		public String SearchBySubject(string subject)
+		{
+			Array Subject = new Array[10];
+			int  i =0;
+			string student = ""; 
+			foreach (var item in MemberList)
+			{
+				Subject = item.student.GetSubject();
+			}
+			foreach (var item in Subject)
+			{
+				i = Array.IndexOf(Subject,subject);
+			student = MemberList[i].student.print();
+			}
+			return student;
 		}
 		
     }

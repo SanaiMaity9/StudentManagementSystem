@@ -23,7 +23,7 @@ namespace StudentManagementSystem
            EmailId = emailId;
        }
        
-       public String GetTeacher(){
+       public String GetTeacherPrintable(){
 			int i = 0;
 			string format;
 			format = Name + "\t";
@@ -39,7 +39,7 @@ namespace StudentManagementSystem
 			return format;
 		}
         
-       public string GetStudent()
+       public string GetStudentPrintable()
        {
            int i = 0;
 			string format;

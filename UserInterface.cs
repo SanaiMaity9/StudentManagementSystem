@@ -44,6 +44,9 @@ namespace StudentManagementSystem
 				this.InsertDecision ();
 				break;
 			case 2:
+			Console.WriteLine("enter the subject");
+			string a = Console.ReadLine();
+			Console.WriteLine(administrator.SearchBySubject(a));
 				break;
 			case 3:
 				break;

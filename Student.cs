@@ -23,8 +23,8 @@ namespace StudentManagementSystem
 		
 		public string print()
         {
-            string s = GetStudent() ;
-            return s;
+            return base.GetStudentPrintable() ;
+            
         }
 		
 	}
