@@ -24,7 +24,8 @@ namespace StudentManagementSystem
            EmailId = emailId;
        }
        
-       public String Print(){
+       public String Print()
+       {
 			StringBuilder format = new StringBuilder();
             format.Append(Name +"\t");
             format.Append(string.Join("\t",Standard));
