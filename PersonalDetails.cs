@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Text;
 
 namespace StudentManagementSystem
 {
@@ -14,7 +15,7 @@ namespace StudentManagementSystem
         
        public void  Details(string name, string[] standard, string state, string phoneNo, string[] subject, string emailId)
        {
-           Array.Clear(Subject,0,Subject.Length);
+            
            Name = name;
            Standard = standard;
            State = state;
@@ -62,7 +63,7 @@ namespace StudentManagementSystem
        {
            return Standard;
        }
-       public Array GetSubject()
+       public string[] GetSubject()
        {
            return Subject;
        }

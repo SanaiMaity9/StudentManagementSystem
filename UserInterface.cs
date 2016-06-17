@@ -7,22 +7,14 @@ namespace StudentManagementSystem
 {
 	public class UserInterface
 	{
-	    string name;
-	    string[] className = new string[3];
-		string state;
-		string phoneNo;
-		string[] subject = new string[10];
-		string emailId;
-        Student StudentObj = new Student();
 		Administrator administrator = new Administrator ();
 
 		public  void Options()
 		{
 			Console.WriteLine ("\nChoose the option :\n");
 			Console.WriteLine ("1. Registration\t");
-			Console.WriteLine ("2. Search Details\t");
-			Console.WriteLine ("3. Update Details \t");
-			Console.WriteLine ("4. Delete Details\t");
+			Console.WriteLine ("2. Search student those have maths as subject\t");
+			Console.WriteLine ("3. Search teacher who teaches maths\t");
 			Console.WriteLine ("5. Display All Deatails\t");
 			Console.WriteLine ("6. Exit\n");
 
@@ -46,12 +38,15 @@ namespace StudentManagementSystem
 			case 2:
 			Console.WriteLine("enter the subject");
 			string a = Console.ReadLine();
-			Console.WriteLine(administrator.SearchBySubject(a));
+			administrator.SearchBySubject(a,1);
+			this.Options();
 				break;
 			case 3:
-				break;
-			case 4:
-				break;
+			Console.WriteLine("enter the subject");
+			string x = Console.ReadLine();
+			administrator.SearchBySubject(x,2);
+			this.Options();
+			break;
 			case 5:
 			this.DisplayDecision();
 				break;
@@ -152,10 +147,14 @@ namespace StudentManagementSystem
       
 	  public void TeacherDetails()
 		{
+			string name, state, phoneNo,emailId;
+			string[] classNames = new string[3];
+			string[] subject = new string[3];
 			while (true) {
 				Console.WriteLine ("Name");
 				name = Console.ReadLine ();
-				this.NoOfClasses ();
+				classNames = new string[3];
+				this.NoOfClasses (classNames);
 				Console.WriteLine ("State");
 				state = Console.ReadLine ();
 				Console.WriteLine ("Phone Number");
@@ -164,13 +163,13 @@ namespace StudentManagementSystem
 				subject[0] = Console.ReadLine();
 				Console.WriteLine ("Email Id");
 				emailId = Console.ReadLine ();
-				Teacher  teacher = new Teacher(name,className,state,phoneNo,subject,emailId);
+				Teacher  teacher = new Teacher(name,classNames,state,phoneNo,subject,emailId);
 				administrator.Insert(teacher);
 				this.Options ();
 
 			}
 		}
-			public void NoOfClasses()
+			public void NoOfClasses(string[] className)
 		{
 		  int i = 0;
 			while (i < 3) {
@@ -196,28 +195,32 @@ namespace StudentManagementSystem
 
        	public void StudentDetails()
 		{
+			string name, state, phoneNo,emailId;
+			string[] classNames = new string[3];
+			string[] subject = new string[3];
 			while (true) {
 				Console.WriteLine ("Name");
 				name = Console.ReadLine ();
 				Console.WriteLine ("Class");
-				className[0] = Console.ReadLine ();
+				classNames[0] = Console.ReadLine ();
 				Console.WriteLine ("State");
 				state = Console.ReadLine ();
 				Console.WriteLine ("Phone Number");
 				phoneNo = Console.ReadLine ();
-				this.NoOfSubjects();
+				subject = new string[10];
+				this.NoOfSubjects(subject);
 				Console.WriteLine ("Email Id");
 				emailId = Console.ReadLine ();
-				Student  student = new Student(name,className,state,phoneNo,subject,emailId);
+				Student  student = new Student(name,classNames,state,phoneNo,subject,emailId);
 				administrator.Insert(student);
 			    this.Options ();
 
 			}
 		}
 		
-		public void NoOfSubjects()
+		public void NoOfSubjects(string[] subject)
 		{
-			Array.Clear(subject,0,subject.Length);
+			
 		  int i = 0;
 			while (i < 10) {
 				Console.WriteLine ("subject");
@@ -239,7 +242,7 @@ namespace StudentManagementSystem
 	    {
 				foreach(var item in administrator.MemberList)
 				{
-					Console.WriteLine(item.student.print());
+					Console.WriteLine(item.teacher.print());
 				}
 			    this.Options ();
 		}

@@ -7,10 +7,8 @@ using System.Globalization;
 
 namespace StudentManagementSystem
 {
-	public class Administrator
+	public class Administrator 
 	{
-		
-        
 		public List<Members> MemberList = new List<Members>();
 		 
 		public void Insert(Object member)
@@ -64,23 +62,45 @@ namespace StudentManagementSystem
 			return i;
 		}
 		
-		public String SearchBySubject(string subject)
+		public void SearchBySubject(string subject ,int type)
 		{
 			Array Subject = new Array[10];
-			int  i =0;
-			string student = ""; 
-			foreach (var item in MemberList)
+			Members a = new Members();
+			if(type == 1)
 			{
-				Subject = item.student.GetSubject();
-			}
-			foreach (var item in Subject)
+			for(int i=0;i<MemberList.Count;i++)
 			{
-				i = Array.IndexOf(Subject,subject);
-			student = MemberList[i].student.print();
+				int j=0;
+				while(MemberList[i].student.GetSubject()[j] != null)
+				{
+				   if(MemberList[i].student.GetSubject()[j] == subject)
+				   {
+					    a = new Members();
+					    a =	MemberList.FirstOrDefault(x => x.student.GetSubject()[j] == subject);
+				   }
+				  j++;
+				}
+				Console.WriteLine(a.student.print());
 			}
-			return student;
 		}
-		
+		else{
+			for(int i=0;i<MemberList.Count; i++)
+			{
+				int j=0;
+				while(MemberList[i].teacher.GetSubject()[j] != null)
+				{
+				   if(MemberList[i].teacher.GetSubject()[j] == subject)
+				   {
+					    a = new Members();
+					    a =	MemberList.FirstOrDefault(x => x.teacher.GetSubject()[j] == subject);
+				   }
+				  j++;
+				}
+			}
+			Console.WriteLine(a.teacher.print());
+		}
+		}
+	
     }
 }
 

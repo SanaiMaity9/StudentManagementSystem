@@ -26,6 +26,5 @@ namespace StudentManagementSystem
             return base.GetStudentPrintable() ;
             
         }
-		
 	}
 }
