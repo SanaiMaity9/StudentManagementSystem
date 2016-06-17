@@ -24,42 +24,26 @@ namespace StudentManagementSystem
            EmailId = emailId;
        }
        
-       public String GetTeacherPrintable(){
-			int i = 0;
-			string format;
-			format = Name + "\t";
-			foreach(var item in Standard)
-			{
-				if(item != null)
-				{
-				    format += Standard[i] + "\t";	
-					i++;
-				}
-			}
-			format	+=  State + "\t" + PhoneNo + "\t" + Subject[0] + "\t" + EmailId;
-			return format;
-		}
-        
-       public string GetStudentPrintable()
-       {
-           int i = 0;
-			string format;
-			format = Name + "\t" + Standard[0] + "\t" + State + "\t" + PhoneNo + "\t" ;
-            foreach(var item in Subject)
-			{
-				if(item != null)
-				{
-				    format += Subject[i] + "\t";	
-					i++;
-				}
-			}
-            format	+=  EmailId;
+       public String Print(){
+			StringBuilder format = new StringBuilder();
             
-			return format;
-           
-       }
-       
-       public Array GetClass()
+            format.Append(Name +"\t");
+            format.Append(string.Join("\t",Standard));
+            format.Append(State +"\t");
+            format.Append(PhoneNo +"\t");
+            format.Append(string.Join("\t",Subject));
+            format.Append(EmailId +"\t");
+            
+            
+            
+            return format.ToString();
+		}
+
+        private bool join(string v, string[] standard)
+        {
+            throw new NotImplementedException();
+        }
+       public String[] GetClass()
        {
            return Standard;
        }

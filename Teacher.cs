@@ -17,13 +17,7 @@ namespace StudentManagementSystem
 		public Teacher()
 		{
 			
-		}
-		public string print()
-        {
-            return base.GetTeacherPrintable();
-        }
-		
-		
+		}	
 	}
 
 }

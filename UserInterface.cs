@@ -242,7 +242,7 @@ namespace StudentManagementSystem
 	    {
 				foreach(var item in administrator.MemberList)
 				{
-					Console.WriteLine(item.teacher.print());
+					Console.WriteLine(item.student.Print());
 				}
 			    this.Options ();
 		}
@@ -251,7 +251,7 @@ namespace StudentManagementSystem
 	    {
 				foreach(var item in administrator.MemberList)
 				{
-					Console.WriteLine(item.teacher.print());
+					Console.WriteLine(item.teacher.Print());
 				}
 			    this.Options ();
 		}	

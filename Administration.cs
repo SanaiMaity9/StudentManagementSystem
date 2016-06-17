@@ -80,7 +80,7 @@ namespace StudentManagementSystem
 				   }
 				  j++;
 				}
-				Console.WriteLine(a.student.print());
+				Console.WriteLine(a.student.Print());
 			}
 		}
 		else{
@@ -97,7 +97,7 @@ namespace StudentManagementSystem
 				  j++;
 				}
 			}
-			Console.WriteLine(a.teacher.print());
+			Console.WriteLine(a.teacher.Print());
 		}
 		}
 	
