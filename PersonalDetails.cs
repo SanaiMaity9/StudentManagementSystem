@@ -26,16 +26,12 @@ namespace StudentManagementSystem
        
        public String Print(){
 			StringBuilder format = new StringBuilder();
-            
             format.Append(Name +"\t");
             format.Append(string.Join("\t",Standard));
             format.Append(State +"\t");
             format.Append(PhoneNo +"\t");
             format.Append(string.Join("\t",Subject));
             format.Append(EmailId +"\t");
-            
-            
-            
             return format.ToString();
 		}
 
